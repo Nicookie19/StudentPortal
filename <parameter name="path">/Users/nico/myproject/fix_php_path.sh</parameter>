@@ -1,0 +1,46 @@
+<parameter name="content">#!/bin/bash
+
+# Script to fix PHP path after removing Herd
+
+echo "Checking current PHP configuration..."
+
+# Check if PHP is still pointing to Herd
+php_path=$(which php 2>/dev/null)
+echo "Current PHP path: $php_path"
+
+# Check for Homebrew PHP
+if [ -f "/opt/homebrew/bin/php" ]; then
+    echo "Found Homebrew PHP at /opt/homebrew/bin/php"
+    echo ""
+    echo "To fix your PHP path, run these commands in your terminal:"
+    echo ""
+    echo "1. Add this line to your ~/.zshrc file:"
+    echo '   export PATH="/opt/homebrew/bin:$PATH"'
+    echo ""
+    echo "2. Then run:"
+    echo "   source ~/.zshrc"
+    echo ""
+    echo "3. Restart your terminal"
+elif [ -f "/usr/local/bin/php" ]; then
+    echo "Found PHP at /usr/local/bin/php"
+    echo ""
+    echo "To fix your PHP path, run these commands in your terminal:"
+    echo ""
+    echo "1. Add this line to your ~/.zshrc file:"
+    echo '   export PATH="/usr/local/bin:$PATH"'
+    echo ""
+    echo "2. Then run:"
+    echo "   source ~/.zshrc"
+    echo ""
+    echo "3. Restart your terminal"
+else
+    echo "No alternative PHP found."
+    echo ""
+    echo "You have two options:"
+    echo ""
+    echo "Option 1: Install PHP with Homebrew"
+    echo "   brew install php"
+    echo ""
+    echo "Option 2: Reinstall Herd from https://herd.laravel.com"
+fi
+</parameter>

@@ -1,0 +1,178 @@
+<parameter name="content"><!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@yield('title', 'Techy Student Portal')</title>
+    <style>
+        :root {
+            --primary-bg: #FFFFFF;
+            --primary-text: #000000;
+            --accent-color: #0066CC;
+            --secondary-bg: #F5F5F5;
+            --border-color: #CCCCCC;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Courier New', Courier, monospace;
+            background-color: var(--primary-bg);
+            color: var(--primary-text);
+        }
+
+        /* Force white background */
+        body, html {
+            background-color: #FFFFFF !important;
+        }
+
+        .portal-layout {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: var(--secondary-bg);
+            border-right: 1px solid var(--border-color);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+        }
+
+        .sidebar-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .sidebar-header h1 {
+            margin: 0;
+            font-size: 1.5em;
+            color: var(--accent-color);
+        }
+
+        .sidebar-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar-nav li a {
+            display: block;
+            color: var(--primary-text);
+            text-decoration: none;
+            padding: 15px 10px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .sidebar-nav li a:hover, .sidebar-nav li a.active {
+            background-color: var(--accent-color);
+            color: #FFFFFF;
+        }
+
+        .sidebar-footer {
+            margin-top: auto;
+            text-align: center;
+            font-size: 0.8em;
+        }
+        .sidebar-footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .main-content {
+            flex-grow: 1;
+            padding: 40px;
+            overflow-y: auto;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 20px;
+        }
+
+        .header h2 {
+            margin: 0;
+            font-size: 2em;
+        }
+
+        .user-profile a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .feature-card {
+            background-color: var(--secondary-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            padding: 20px;
+        }
+
+        .feature-card h3 {
+            color: var(--accent-color);
+            margin-top: 0;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        .feature-card ul {
+            padding-left: 20px;
+            list-style-type: square;
+        }
+
+        .feature-card li {
+            margin-bottom: 10px;
+        }
+        .feature-card a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .feature-card a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body style="background-color: #FFFFFF !important;">
+    <div class="portal-layout">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1>Student Portal</h1>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="{{ url('/dashboard') }}" class="{{ request()->is('dashboard') || request()->is('/') ? 'active' : '' }}">Dashboard</a></li>
+                    <li><a href="{{ url('/courses') }}" class="{{ request()->is('courses') ? 'active' : '' }}">Courses</a></li>
+                    <li><a href="{{ url('/grades') }}" class="{{ request()->is('grades') ? 'active' : '' }}">Grades</a></li>
+                    <li><a href="{{ url('/schedule') }}" class="{{ request()->is('schedule') ? 'active' : '' }}">Schedule</a></li>
+                    <li><a href="{{ url('/announcements') }}" class="{{ request()->is('announcements') ? 'active' : '' }}">Announcements</a></li>
+                    <li><a href="{{ url('/library') }}" class="{{ request()->is('library') ? 'active' : '' }}">Library</a></li>
+                    <li><a href="{{ url('/career-services') }}" class="{{ request()->is('career-services') ? 'active' : '' }}">Career Services</a></li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <p><a href="{{ url('/profile') }}">Profile</a> | <a href="{{ url('/logout') }}">Logout</a></p>
+                <p>&copy; {{ date('Y') }} Tech University</p>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            @yield('content')
+        </main>
+    </div>
+</body>
+</html>
+</parameter>

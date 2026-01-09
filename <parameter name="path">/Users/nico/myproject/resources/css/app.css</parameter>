@@ -1,0 +1,5 @@
+<parameter name="content">/* Force white background */
+body {
+    background-color: #FFFFFF !important;
+}
+</parameter>

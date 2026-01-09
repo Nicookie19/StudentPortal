@@ -1,0 +1,4 @@
+<parameter name="content">#!/bin/bash
+cd /Users/nico/myproject
+php artisan serve --port=8000
+</parameter>
