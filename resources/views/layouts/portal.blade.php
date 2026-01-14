@@ -500,6 +500,7 @@
             </nav>
             <div class="sidebar-footer">
                 <a href="{{ url('/profile') }}"><span>👤</span> Profile</a>
+                <a href="{{ url('/admin/login') }}"><span>⚙️</span> Admin Portal</a>
                 <a href="{{ url('/logout') }}"><span>🚪</span> Logout</a>
                 <p>&copy; {{ date('Y') }} College of Computer Studies</p>
             </div>
@@ -556,4 +557,3 @@
     </script>
 </body>
 </html>
-

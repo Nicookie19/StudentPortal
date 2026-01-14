@@ -500,6 +500,7 @@
             </nav>
             <div class="sidebar-footer">
                 <a href="<?php echo e(url('/profile')); ?>"><span>👤</span> Profile</a>
+                <a href="<?php echo e(url('/admin/login')); ?>"><span>⚙️</span> Admin Portal</a>
                 <a href="<?php echo e(url('/logout')); ?>"><span>🚪</span> Logout</a>
                 <p>&copy; <?php echo e(date('Y')); ?> College of Computer Studies</p>
             </div>
@@ -556,5 +557,4 @@
     </script>
 </body>
 </html>
-
 <?php /**PATH /Users/nico/myproject/resources/views/layouts/portal.blade.php ENDPATH**/ ?>
